@@ -1,9 +1,9 @@
-cpmaddpackage("gh:STMicroelectronics/STM32CubeH7@1.11.2")
+cpmaddpackage("gh:STMicroelectronics/STM32CubeH5@1.5.0")
 
 function(add_stm32_target TARGET)
   file(GLOB_RECURSE SRC
-       ${STM32CubeH7_SOURCE_DIR}/Drivers/STM32H7xx_HAL_Driver/*.c
-       src/startup_stm32h743zitx.s src/bsp.c)
+       ${STM32CubeH7_SOURCE_DIR}/Drivers/STM32H5xx_HAL_Driver/*.c
+       src/startup_stm32h563zitx.s src/bsp.c)
   # Filter unwanted .template files
   list(FILTER SRC EXCLUDE REGEX ".*template")
   add_executable(${TARGET} ${SRC})
@@ -16,25 +16,25 @@ function(add_stm32_target TARGET)
   )
 
   target_compile_definitions(${TARGET} PUBLIC USE_FULL_LL_DRIVER USE_HAL_DRIVER
-                                              STM32H743xx)
+                                              STM32H563xx)
 
   target_include_directories(
     ${TARGET}
-    PUBLIC ${STM32CubeH7_SOURCE_DIR}/Drivers/CMSIS/Core/Include
-           ${STM32CubeH7_SOURCE_DIR}/Drivers/CMSIS/Device/ST/STM32H7xx/Include
-           ${STM32CubeH7_SOURCE_DIR}/Drivers/CMSIS/Include
-           ${STM32CubeH7_SOURCE_DIR}/Drivers/STM32H7xx_HAL_Driver/Inc)
+    PUBLIC ${STM32CubeH5_SOURCE_DIR}/Drivers/CMSIS/Core/Include
+           ${STM32CubeH5_SOURCE_DIR}/Drivers/CMSIS/Device/ST/STM32H5xx/Include
+           ${STM32CubeH5_SOURCE_DIR}/Drivers/CMSIS/Include
+           ${STM32CubeH5_SOURCE_DIR}/Drivers/STM32H5xx_HAL_Driver/Inc)
 
-  # Use some other projects stm32h7xx_hal_conf.h and system_stm32h7xx.c files
+  # Use some other projects stm32h5xx_hal_conf.h and system_stm32h5xx.c files
   target_include_directories(
     ${TARGET}
     PUBLIC
-      ${STM32CubeH7_SOURCE_DIR}/Projects/NUCLEO-H743ZI/Applications/FreeRTOS/FreeRTOS_MPU/Inc
+      ${STM32CubeH5_SOURCE_DIR}/Projects/NUCLEO-H563ZI/Applications/ThreadX/Tx_FreeRTOS_Wrapper/Inc
   )
   target_sources(
     ${TARGET}
     PRIVATE
-      ${STM32CubeH7_SOURCE_DIR}/Projects/NUCLEO-H743ZI/Applications/FreeRTOS/FreeRTOS_MPU/Src/system_stm32h7xx.c
+      ${STM32CubeH5_SOURCE_DIR}/Projects/NUCLEO-H563ZI/Applications/ThreadX/Tx_FreeRTOS_Wrapper/Src/system_stm32h5xx.c
   )
 
   target_link_libraries(${TARGET} PRIVATE DCC::DCC)

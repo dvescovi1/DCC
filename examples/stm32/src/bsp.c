@@ -3,14 +3,14 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <sys/time.h>
-#include "stm32h7xx_hal.h"
-#include "stm32h7xx_ll_cortex.h"
-#include "stm32h7xx_ll_gpio.h"
-#include "stm32h7xx_ll_pwr.h"
-#include "stm32h7xx_ll_rcc.h"
-#include "stm32h7xx_ll_tim.h"
-#include "stm32h7xx_ll_usart.h"
-#include "stm32h7xx_ll_utils.h"
+#include "stm32h5xx_hal.h"
+#include "stm32h5xx_ll_cortex.h"
+#include "stm32h5xx_ll_gpio.h"
+#include "stm32h5xx_ll_pwr.h"
+#include "stm32h5xx_ll_rcc.h"
+#include "stm32h5xx_ll_tim.h"
+#include "stm32h5xx_ll_usart.h"
+#include "stm32h5xx_ll_utils.h"
 
 // LEDs
 #define LD1_Pin LL_GPIO_PIN_0
