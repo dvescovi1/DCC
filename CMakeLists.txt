@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.25 FATAL_ERROR)
 include(FetchContent)
 
 # Include toolchain file
-include("cmake/gcc-arm-none-eabi.cmake")
+#include("cmake/gcc-arm-none-eabi.cmake")
 
 FetchContent_Declare(
   CMakeModules
