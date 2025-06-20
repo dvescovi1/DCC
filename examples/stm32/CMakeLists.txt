@@ -41,7 +41,7 @@ function(add_stm32_target TARGET)
 
   target_link_libraries(
     ${TARGET} PRIVATE --specs=nano.specs -Wl,--gc-sections,-Map=${TARGET}.map
-                      -T${CMAKE_CURRENT_SOURCE_DIR}/STM32H743ZITX_FLASH.ld)
+                      -T${CMAKE_CURRENT_SOURCE_DIR}/STM32H563xx_FLASH.ld)
 
   # Create .hex files post build
   add_custom_command(
