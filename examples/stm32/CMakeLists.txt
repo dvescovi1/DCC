@@ -2,7 +2,7 @@ cpmaddpackage("gh:STMicroelectronics/STM32CubeH5@1.5.0")
 
 function(add_stm32_target TARGET)
   file(GLOB_RECURSE SRC
-       ${STM32CubeH7_SOURCE_DIR}/Drivers/STM32H5xx_HAL_Driver/*.c
+       ${STM32CubeH5_SOURCE_DIR}/Drivers/STM32H5xx_HAL_Driver/*.c
        src/startup_stm32h563zitx.s src/bsp.c)
   # Filter unwanted .template files
   list(FILTER SRC EXCLUDE REGEX ".*template")

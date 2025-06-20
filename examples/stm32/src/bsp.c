@@ -15,10 +15,10 @@
 // LEDs
 #define LD1_Pin LL_GPIO_PIN_0
 #define LD1_GPIO_Port GPIOB
-#define LD2_Pin LL_GPIO_PIN_1
-#define LD2_GPIO_Port GPIOE
-#define LD3_Pin LL_GPIO_PIN_14
-#define LD3_GPIO_Port GPIOB
+#define LD2_Pin LL_GPIO_PIN_4
+#define LD2_GPIO_Port GPIOF
+#define LD3_Pin LL_GPIO_PIN_4
+#define LD3_GPIO_Port GPIOG
 
 // STLINK UART bridge
 #define STLINK_RX_Pin LL_GPIO_PIN_8
