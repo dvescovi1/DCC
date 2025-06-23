@@ -1,5 +1,4 @@
 #include "bsp.h"
-#include <errno.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <sys/time.h>
@@ -11,6 +10,8 @@
 #include "stm32h5xx_ll_tim.h"
 #include "stm32h5xx_ll_usart.h"
 #include "stm32h5xx_ll_utils.h"
+#include "stm32h5xx_ll_bus.h"
+
 
 // LEDs
 #define LD1_Pin LL_GPIO_PIN_0
@@ -98,7 +99,8 @@ int _write(int, char* ptr, int len) {
 
 void SysTick_Handler() { HAL_IncTick(); }
 
-void HAL_MspInit() { __HAL_RCC_SYSCFG_CLK_ENABLE(); }
+//void HAL_MspInit() { __HAL_RCC_SYSCFG_CLK_ENABLE(); }
+
 
 // Initialize system core clock to 64MHz
 static void init_clock() {
