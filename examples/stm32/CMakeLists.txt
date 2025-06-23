@@ -39,19 +39,19 @@ function(add_stm32_target TARGET)
 
   target_link_libraries(${TARGET} PRIVATE DCC::DCC)
 
-  target_link_libraries(
-    ${TARGET} PRIVATE --specs=nano.specs -Wl,--gc-sections,-Map=${TARGET}.map
-                      -T${CMAKE_CURRENT_SOURCE_DIR}/STM32H563xx_FLASH.ld)
+#  target_link_libraries(
+#    ${TARGET} PRIVATE --specs=nano.specs -Wl,--gc-sections,-Map=${TARGET}.map
+#                      -T${CMAKE_CURRENT_SOURCE_DIR}/STM32H563xx_FLASH.ld)
 
   # Create .hex files post build
-  add_custom_command(
-    TARGET ${TARGET}
-    POST_BUILD
-    COMMAND ${CMAKE_OBJCOPY} -O ihex ${TARGET} ${TARGET}.hex
-    COMMAND ${CMAKE_OBJDUMP} --source --all-headers --demangle --line-numbers
-            --wide ${TARGET} > ${TARGET}.lst
-    COMMAND ${CMAKE_SIZE} --format=berkeley ${TARGET})
+#  add_custom_command(
+#    TARGET ${TARGET}
+#    POST_BUILD
+#    COMMAND ${CMAKE_OBJCOPY} -O ihex ${TARGET} ${TARGET}.hex
+#    COMMAND ${CMAKE_OBJDUMP} --source --all-headers --demangle --line-numbers
+#            --wide ${TARGET} > ${TARGET}.lst
+#    COMMAND ${CMAKE_SIZE} --format=berkeley ${TARGET})
 endfunction()
 
-add_stm32_target(DCCStm32Decoder)
+#add_stm32_target(DCCStm32Decoder)
 add_stm32_target(DCCStm32CommandStation)

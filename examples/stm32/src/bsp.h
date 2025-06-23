@@ -9,6 +9,7 @@
 extern "C" {
 #endif
 
+#if 0
 /* Private defines -----------------------------------------------------------*/
 #ifndef NVIC_PRIORITYGROUP_0
 #define NVIC_PRIORITYGROUP_0         ((uint32_t)0x00000007) /*!< 0 bit  for pre-emption priority,
@@ -22,7 +23,7 @@ extern "C" {
 #define NVIC_PRIORITYGROUP_4         ((uint32_t)0x00000003) /*!< 4 bits for pre-emption priority,
                                                                  0 bit  for subpriority */
 #endif
-
+#endif
 // Initialize board to decoder (PE5 and PE6 are track inputs)
 void bsp_init_decoder(void);
 
