@@ -1,7 +1,10 @@
 #include "bsp.h"
+#include <errno.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <sys/time.h>
+#include <sys/stat.h>
+
 #include "stm32h5xx_ll_icache.h"
 #include "stm32h5xx_ll_pwr.h"
 #include "stm32h5xx_ll_crs.h"
@@ -105,7 +108,7 @@ int _write(int, char* ptr, int len) {
 
 void SysTick_Handler() { HAL_IncTick(); }
 
-void HAL_MspInit() { __HAL_RCC_SYSCFG_CLK_ENABLE(); }
+#void HAL_MspInit() { __HAL_RCC_SYSCFG_CLK_ENABLE(); }
 
 // Initialize system core clock to 64MHz
 #if 0
@@ -326,7 +329,7 @@ void bsp_init_decoder(void) {
   NVIC_EnableIRQ(TIM15_IRQn);
 
   LL_TIM_InitTypeDef TIM_InitStruct = {0};
-  TIM_InitStruct.Prescaler = SystemCoreClock / 1000000;
+  TIM_InitStruct.Prescaler = (uint16_t)(SystemCoreClock / 1000000 -1);
   TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
   TIM_InitStruct.Autoreload = 65535;
   TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
@@ -369,7 +372,7 @@ void bsp_init_command_station(void) {
   NVIC_EnableIRQ(TIM15_IRQn);
 
   LL_TIM_InitTypeDef TIM_InitStruct = {0};
-  TIM_InitStruct.Prescaler = SystemCoreClock / 1000000;
+  TIM_InitStruct.Prescaler = (uint16_t)(SystemCoreClock / 1000000 -1);
   TIM_InitStruct.CounterMode = LL_TIM_COUNTERMODE_UP;
   TIM_InitStruct.Autoreload = 0;
   TIM_InitStruct.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
